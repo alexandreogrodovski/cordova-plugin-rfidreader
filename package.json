@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-toastyplugin",
   "version": "0.0.1",
-  "description": "RFID Reader Cordova Plugin.",
+  "description": "RFID Reader Cordova plugin.",
   "cordova": {
     "id": "cordova-plugin-toastyplugin",
     "platforms": [

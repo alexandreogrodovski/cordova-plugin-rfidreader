@@ -15,16 +15,17 @@
         <engine name="cordova" version=">=3.0.0"/>
     </engines>
 
-    <js-module src="www/toastyplugin.js" name="toastyPlugin">
+    <js-module src="www/rfidplugin.js" name="toastyPlugin">
         <clobbers target="window.plugins.toastyPlugin" />
     </js-module>
+
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="ToastyPlugin">
-                <param name="android-package" value="com.stanleyidesis.cordova.plugin.ToastyPlugin"/>
+                <param name="android-package" value="itaipubinacional.cordova.plugin.RFIDReaderPlugin"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/ToastyPlugin.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
+        <source-file src="src/android/RFIDReaderPlugin.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
     </platform>
 </plugin>
