@@ -9,7 +9,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RFIDReaderPlugin extends CordovaPlugin {
-private static final String DURATION_LONG = "long";
+
+  private static final String START = "start";
+  private static final String STOP = "stop";
+  private static final String READ = "read";
+
+  private String action;
+  private CallbackContext callbackContext;
+
+  //private RFIDWithUHF rfidReader;
+
+  private JSONArray result;
+  private ReadTask readTask;
+  private boolean stop = false;
+  private int count;
 
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
