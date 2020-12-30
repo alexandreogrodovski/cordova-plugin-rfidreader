@@ -38,4 +38,53 @@ public class RFIDReaderPlugin extends CordovaPlugin {
       callbackContext.sendPluginResult(pluginResult);
       return true;
   }
+
+  private void init() throws Exception {
+
+		if (this.action == null)
+			throw new Exception("Action não informada");
+
+		//this.rfidReader = RFIDWithUHF.getInstance();
+
+	}
+
+	protected class ReadTask implements Runnable {
+
+		@Override
+		public void run() {
+
+			result = new JSONArray();
+
+			while (!stop) {
+
+				try {
+
+					result.put(this.read());
+
+					Thread.sleep(1000);
+
+				} catch (Exception e) {
+					callbackContext.error(e.getMessage());
+				}
+			}
+
+		}
+
+		private JSONObject read () throws JSONException {
+
+			//String[] result = rfidReader.readTagFromBuffer();
+
+			JSONObject jsonResult = null;
+
+			if (result != null) {
+				jsonResult = new JSONObject();
+				count ++;
+				jsonResult.put("tagId", count);
+				//jsonResult.put("tagId", result[0]);
+			}
+
+			return jsonResult;
+
+		}
+	}
 }
