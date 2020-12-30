@@ -1,8 +1,5 @@
 package itaipubinacional.cordova.plugin;
 
-// The native Toast API
-import android.widget.Toast;
-
 // Cordova-required packages
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -18,5 +15,33 @@ private static final String DURATION_LONG = "long";
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
 
     return true;
+  }
+
+  protected class ReadTask implements Runnable {
+
+    @Override
+    public void run() {
+      result = new JSONArray();
+      while (!stop) {
+        try {
+          result.put(this.read());
+          Thread.sleep(1000);
+        } catch (Exception e) {
+          callbackContext.error(e.getMessage());
+        }
+      }
+    }
+
+    private JSONObject read () throws JSONException {
+      //String[] result = rfidReader.readTagFromBuffer();
+      JSONObject jsonResult = null;
+      if (result != null) {
+        jsonResult = new JSONObject();
+        count ++;
+        jsonResult.put("tagId", count);
+        //jsonResult.put("tagId", result[0]);
+      }
+      return jsonResult;
+    }
   }
 }
