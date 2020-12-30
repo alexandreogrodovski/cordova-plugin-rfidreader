@@ -1,12 +1,11 @@
 package itaipubinacional.cordova.plugin;
 
-// Cordova-required packages
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+//import com.rscja.deviceapi.RFIDWithUHF;
 
 public class RFIDReaderPlugin extends CordovaPlugin {
 
@@ -26,8 +25,34 @@ public class RFIDReaderPlugin extends CordovaPlugin {
 
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
-
+    try {
+      this.init();
+      switch (action) {
+        case START:
+          this.stop = false;
+          //this.rfidReader.startInventoryTag(0, 0);
+          this.readTask = new ReadTask();
+          this.cordova.getThreadPool().execute(readTask);
+          break;
+        case READ:
+          callbackContext.success(this.result);
+          break;
+        case STOP:
+          this.stop = true;
+          //this.rfidReader.stopInventory();
+          break;
+      }
+    } catch (Exception e) {
+      this.callbackContext.error(e.getMessage());
+      return false;
+    }
     return true;
+  }
+
+  private void init() throws Exception {
+    if (this.action == null)
+      throw new Exception("Action não informada");
+    //this.rfidReader = RFIDWithUHF.getInstance();
   }
 
   protected class ReadTask implements Runnable {
