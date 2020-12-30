@@ -1,21 +1,21 @@
 // Empty constructor
-function ToastyPlugin() {}
+function RFIDReaderPlugin() {}
 
 // The function that passes work along to native shells
 // Message is a string, duration may be 'long' or 'short'
-ToastyPlugin.prototype.show = function(message, duration, successCallback, errorCallback) {
+RFIDReaderPlugin.prototype.show = function(message, duration, successCallback, errorCallback) {
   var options = {};
   options.message = message;
   options.duration = duration;
-  cordova.exec(successCallback, errorCallback, 'ToastyPlugin', 'show', [options]);
+  cordova.exec(successCallback, errorCallback, 'RFIDReaderPlugin', 'show', [options]);
 }
 
-// Installation constructor that binds ToastyPlugin to window
-ToastyPlugin.install = function() {
+// Installation constructor that binds RFIDReaderPlugin to window
+RFIDReaderPlugin.install = function() {
   if (!window.plugins) {
     window.plugins = {};
   }
-  window.plugins.toastyPlugin = new ToastyPlugin();
-  return window.plugins.toastyPlugin;
+  window.plugins.rfidReaderPlugin = new RFIDReaderPlugin();
+  return window.plugins.rfidReaderPlugin;
 };
-cordova.addConstructor(ToastyPlugin.install);
+cordova.addConstructor(RFIDReaderPlugin.install);

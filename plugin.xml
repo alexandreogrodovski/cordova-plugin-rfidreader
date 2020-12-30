@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-toastyplugin" version="0.0.1">
+        id="cordova-plugin-rfidreaderplugin" version="0.0.1">
 
-    <name>ToastyPlugin</name>
+    <name>RFIDReaderPlugin</name>
     <description>RFID Reader Cordova plugin.</description>
     <license>MIT</license>
 
@@ -15,13 +15,13 @@
         <engine name="cordova" version=">=3.0.0"/>
     </engines>
 
-    <js-module src="www/rfidplugin.js" name="toastyPlugin">
-        <clobbers target="window.plugins.toastyPlugin" />
+    <js-module src="www/rfidplugin.js" name="rfidReaderPlugin">
+        <clobbers target="window.plugins.rfidReaderPlugin" />
     </js-module>
 
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="ToastyPlugin">
+            <feature name="RFIDReaderPlugin">
                 <param name="android-package" value="itaipubinacional.cordova.plugin.RFIDReaderPlugin"/>
             </feature>
         </config-file>
