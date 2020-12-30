@@ -26,6 +26,6 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/RFIDReaderPlugin.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
+        <source-file src="src/android/RFIDReaderPlugin.java" target-dir="src/itaipubinacional/cordova/plugin" />
     </platform>
 </plugin>

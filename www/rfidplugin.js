@@ -19,3 +19,39 @@ RFIDReaderPlugin.install = function() {
   return window.plugins.rfidReaderPlugin;
 };
 cordova.addConstructor(RFIDReaderPlugin.install);
+
+
+// Código do David
+
+RFIDReaderPlugin.prototype.start = function (successCallback, errorCallback) {
+
+	if (errorCallback == null) {
+        errorCallback = function () {
+        };
+    }
+
+    if (typeof errorCallback != "function") {
+        console.log("RFIDReaderPlugin.start: errorCallback não é uma função");
+        return;
+    }
+
+    if (typeof successCallback != "function") {
+        console.log("RFIDReaderPlugin.start: successCallback não é uma função");
+        return;
+    }
+
+	var options = {};
+
+	exec(
+	     	function(result) {
+	            successCallback(result);
+	        },
+            function(error) {
+               errorCallback(error);
+            },
+
+            'RFIDReaderPlugin',
+            'start',
+			[options]
+     );
+}
