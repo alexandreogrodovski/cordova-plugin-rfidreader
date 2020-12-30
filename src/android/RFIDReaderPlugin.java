@@ -9,49 +9,35 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 public class RFIDReaderPlugin extends CordovaPlugin {
-
   private static final String DURATION_LONG = "long";
-
   @Override
-	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
-
-		try {
-
-			this.init();
-
-			switch (action) {
-
-				case START:
-
-					this.stop = false;
-
-					//this.rfidReader.startInventoryTag(0, 0);
-
-					this.readTask = new ReadTask();
-
-					this.cordova.getThreadPool().execute(readTask);
-
-					break;
-
-				case READ:
-						callbackContext.success(this.result);
-					break;
-
-				case STOP:
-
-					this.stop = true;
-
-					//this.rfidReader.stopInventory();
-
-					break;
-			}
-		} catch (Exception e) {
-			this.callbackContext.error(e.getMessage());
-			return false;
-		}
-
-		return true;
-	}
+  public boolean execute(String action, JSONArray args,
+    final CallbackContext callbackContext) {
+      // Verify that the user sent a 'show' action
+      if (!action.equals("show")) {
+        callbackContext.error("\"" + action + "\" is not a recognized action.");
+        return false;
+      }
+      String message;
+      String duration;
+      try {
+        JSONObject options = args.getJSONObject(0);
+        message = options.getString("message");
+        duration = options.getString("duration");
+      } catch (JSONException e) {
+        callbackContext.error("Error encountered: " + e.getMessage());
+        return false;
+      }
+      // Create the toast
+      Toast toast = Toast.makeText(cordova.getActivity(), message,
+        DURATION_LONG.equals(duration) ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT);
+      // Display toast
+      toast.show();
+      // Send a positive result to the callbackContext
+      PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
+      callbackContext.sendPluginResult(pluginResult);
+      return true;
+  }
 
   private void init() throws Exception {
 
