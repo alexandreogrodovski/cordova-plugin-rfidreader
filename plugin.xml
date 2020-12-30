@@ -2,14 +2,14 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-toastyplugin" version="0.0.1">
-    <name>ToastyPlugin</name>
 
-    <description>An Android Cordova plugin that allows users to display simple Toast messages at the bottom of the screen.</description>
+    <name>ToastyPlugin</name>
+    <description>RFID Reader Cordova plugin.</description>
     <license>MIT</license>
 
-    <keywords>cordova,android,toast,message,alert</keywords>
-    <repo>https://github.com/alexandreogrodovski/ToastyPlugin.git</repo>
-    <issue>https://github.com/alexandreogrodovski/ToastyPlugin/issues</issue>
+    <keywords>rfid,reader,cordova,android</keywords>
+    <repo>https://github.com/alexandreogrodovski/cordova-plugin-rfidreader.git</repo>
+    <issue>https://github.com/alexandreogrodovski/cordova-plugin-rfidreader/issues</issue>
 
     <engines>
         <engine name="cordova" version=">=3.0.0"/>

@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-toastyplugin",
   "version": "0.0.1",
-  "description": "An Android Cordova plugin that allows users to display simple Toast messages at the bottom of the screen.",
+  "description": "RFID Reader Cordova Plugin.",
   "cordova": {
     "id": "cordova-plugin-toastyplugin",
     "platforms": [
@@ -10,15 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexandreogrodovski/ToastyPlugin.git"
+    "url": "git+https://github.com/alexandreogrodovski/cordova-plugin-rfidreader.git"
   },
   "keywords": [
-    "Toast",
-    "Notification",
-    "Message",
-    "Alert",
-    "ecosystem:cordova",
-    "cordova-android"
+    "rfid",
+    "reader",
+    "cordova",
+    "android"
   ],
   "engines": [
     {
@@ -26,10 +24,10 @@
       "version": ">=3.0.0"
     }
   ],
-  "author": "Alexandre Ogrodovski <alexandreogrodovski@gmail.com>",
+  "author": "Itaipu Binacional <alexandreogrodovski@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alexandreogrodovski/ToastyPlugin/issues"
+    "url": "https://github.com/alexandreogrodovski/cordova-plugin-rfidreader/issues"
   },
-  "homepage": "https://github.com/alexandreogrodovski/ToastyPlugin"
+  "homepage": "https://github.com/alexandreogrodovski/cordova-plugin-rfidreader"
 }
