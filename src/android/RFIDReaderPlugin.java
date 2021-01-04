@@ -25,6 +25,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
 
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
+    this.callbackContext = callbackContext;
     try {
       this.init();
       switch (action) {
@@ -35,7 +36,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           this.cordova.getThreadPool().execute(readTask);
           break;
         case READ:
-          callbackContext.success(this.result);
+          this.callbackContext.success(this.result);
           break;
         case STOP:
           this.stop = true;
@@ -43,7 +44,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           break;
       }
     } catch (Exception e) {
-      callbackContext.error(e.getMessage());
+      this.callbackContext.error(e.getMessage());
       return false;
     }
     return true;
@@ -65,7 +66,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           result.put(this.read());
           Thread.sleep(1000);
         } catch (Exception e) {
-          callbackContext.error(e.getMessage());
+          this.callbackContext.error(e.getMessage());
         }
       }
     }
