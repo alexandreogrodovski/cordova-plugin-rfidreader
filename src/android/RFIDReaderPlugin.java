@@ -13,9 +13,6 @@ public class RFIDReaderPlugin extends CordovaPlugin {
   private static final String STOP = "stop";
   private static final String READ = "read";
 
-  private String action;
-  private CallbackContext callbackContext;
-
   //private RFIDWithUHF rfidReader;
 
   private JSONArray result;
@@ -25,9 +22,12 @@ public class RFIDReaderPlugin extends CordovaPlugin {
 
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
-    this.callbackContext = callbackContext;
+
+    if (this.action == null)
+      throw new Exception("Action não informada");
+    //this.rfidReader = RFIDWithUHF.getInstance();
+
     try {
-      this.init();
       switch (action) {
         case START:
           this.stop = false;
@@ -36,7 +36,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           this.cordova.getThreadPool().execute(readTask);
           break;
         case READ:
-          this.callbackContext.success(this.result);
+          callbackContext.success(this.result);
           break;
         case STOP:
           this.stop = true;
@@ -44,16 +44,10 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           break;
       }
     } catch (Exception e) {
-      this.callbackContext.error(e.getMessage());
+      callbackContext.error(e.getMessage());
       return false;
     }
     return true;
-  }
-
-  private void init() throws Exception {
-    if (this.action == null)
-      throw new Exception("Action não informada");
-    //this.rfidReader = RFIDWithUHF.getInstance();
   }
 
   protected class ReadTask implements Runnable {
@@ -66,7 +60,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           result.put(this.read());
           Thread.sleep(1000);
         } catch (Exception e) {
-          callbackContext.error(e.getMessage());
+
         }
       }
     }
