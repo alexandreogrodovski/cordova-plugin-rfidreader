@@ -43,7 +43,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           break;
       }
     } catch (Exception e) {
-      this.callbackContext.error(e.getMessage());
+      callbackContext.error(e.getMessage());
       return false;
     }
     return true;
