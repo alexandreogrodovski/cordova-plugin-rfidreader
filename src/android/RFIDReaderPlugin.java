@@ -66,7 +66,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           result.put(this.read());
           Thread.sleep(1000);
         } catch (Exception e) {
-          this.callbackContext.error(e.getMessage());
+          callbackContext.error(e.getMessage());
         }
       }
     }
