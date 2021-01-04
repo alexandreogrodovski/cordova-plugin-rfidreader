@@ -113,3 +113,6 @@ RFIDReaderPlugin.prototype.read = function (successCallback, errorCallback) {
 			[options]
      );
 }
+
+//  var rfidReaderPlugin = new RFIDReaderPlugin();
+// module.exports = rfidReaderPlugin;
