@@ -52,7 +52,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
     public void run() {
       while (!stop) {
         try {
-          this.result.put(this.read());
+          result.put(this.read());
           Thread.sleep(1000);
         } catch (Exception e) {
 
