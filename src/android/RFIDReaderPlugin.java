@@ -23,7 +23,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
 
-    if (this.action == null)
+    if (action == null)
       throw new Exception("Action não informada");
     //this.rfidReader = RFIDWithUHF.getInstance();
 
