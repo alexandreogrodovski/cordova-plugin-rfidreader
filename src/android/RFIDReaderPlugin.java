@@ -2,9 +2,11 @@ package itaipubinacional.cordova.plugin;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.Random;
 
 public class RFIDReaderPlugin extends CordovaPlugin {
 
@@ -13,7 +15,6 @@ public class RFIDReaderPlugin extends CordovaPlugin {
   private static final String READ = "read";
 
   private CallbackContext callbackContext;
-  private int lastRFIDCode;
   private JSONArray jsonArray = new JSONArray();
   private boolean execute;
 
@@ -34,6 +35,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           callbackContext.success();
           break;
         case READ:
+          //callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, jsonArray));
           callbackContext.success(jsonArray);
           break;
       }
@@ -51,7 +53,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
       try {
         while (execute) {
           JSONObject jsonObject = new JSONObject();
-          jsonObject.put("tagId", lastRFIDCode++);
+          jsonObject.put("tagId", new Random().nextInt(1000000));
           jsonArray.put(jsonObject);
           Thread.sleep(1000);
         }
