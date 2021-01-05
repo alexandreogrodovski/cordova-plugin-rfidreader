@@ -19,7 +19,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
     try {
       switch (action) {
         case START:
-
+          callbackContext.success();
           break;
         case STOP:
 
