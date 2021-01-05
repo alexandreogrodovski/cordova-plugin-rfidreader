@@ -5,7 +5,6 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-//import com.rscja.deviceapi.RFIDWithUHF;
 
 public class RFIDReaderPlugin extends CordovaPlugin {
 
@@ -13,25 +12,52 @@ public class RFIDReaderPlugin extends CordovaPlugin {
   private static final String STOP = "stop";
   private static final String READ = "read";
 
+  private CallbackContext callbackContext;
+  private int lastRFIDCode;
+  private JSONArray jsonArray = new JSONArray();
+  private boolean execute;
+
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
-
+    this.callbackContext = callbackContext;
     try {
       switch (action) {
         case START:
+          execute = true;
+          cordova
+            .getThreadPool()
+            .execute(new ReadTask());
           callbackContext.success();
           break;
         case STOP:
-
+          execute = false;
+          callbackContext.success();
           break;
         case READ:
-
+          callbackContext.success(jsonArray);
           break;
       }
     } catch (Exception e) {
-
+      callbackContext.error(e.getMessage());
       return false;
     }
     return true;
+  }
+
+  protected class ReadTask implements Runnable {
+
+    @Override
+    public void run () {
+      try {
+        while (execute) {
+          JSONObject jsonObject = new JSONObject();
+          jsonObject.put("tagId", lastRFIDCode++);
+          jsonArray.put(jsonObject);
+          Thread.sleep(1000);
+        }
+      } catch (Exception e) {
+        callbackContext.error(e.getMessage());
+      }
+    }
   }
 }
