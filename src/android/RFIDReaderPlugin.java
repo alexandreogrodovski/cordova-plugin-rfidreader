@@ -35,8 +35,10 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           callbackContext.success();
           break;
         case READ:
-          //callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, jsonArray));
-          callbackContext.success(jsonArray);
+          //PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, jsonArray.toString());
+          //pluginResult.setKeepCallback(true);
+          //callbackContext.sendPluginResult(pluginResult);
+          callbackContext.success(jsonArray.toString());
           break;
       }
     } catch (Exception e) {
