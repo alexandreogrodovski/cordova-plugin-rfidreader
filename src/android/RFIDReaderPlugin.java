@@ -39,9 +39,9 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           //pluginResult.setKeepCallback(true);
           //callbackContext.sendPluginResult(pluginResult);
 
-          JSONObject jsonObject = new JSONObject();
-          jsonObject.put("tagId", new Random().nextInt(1000000));
-          jsonArray.put(jsonObject);
+          //JSONObject jsonObject = new JSONObject();
+          //jsonObject.put("tagId", new Random().nextInt(1000000));
+          //jsonArray.put(jsonObject);
           callbackContext.success(jsonArray.toString());
           break;
       }
