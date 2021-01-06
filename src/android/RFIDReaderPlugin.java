@@ -55,7 +55,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
     public void run () {
       try {
         TimeZone timeZone = TimeZone.getTimeZone("UTC");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         dateFormat.setTimeZone(timeZone);
         while (execute) {
           JSONObject jsonObject = new JSONObject();
