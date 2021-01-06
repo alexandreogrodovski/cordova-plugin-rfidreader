@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.Random;
+import java.util.Date
 
 public class RFIDReaderPlugin extends CordovaPlugin {
 
@@ -35,13 +36,6 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           callbackContext.success();
           break;
         case READ:
-          //PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, jsonArray.toString());
-          //pluginResult.setKeepCallback(true);
-          //callbackContext.sendPluginResult(pluginResult);
-
-          //JSONObject jsonObject = new JSONObject();
-          //jsonObject.put("tagId", new Random().nextInt(1000000));
-          //jsonArray.put(jsonObject);
           callbackContext.success(jsonArray.toString());
           break;
       }
@@ -60,6 +54,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
         while (execute) {
           JSONObject jsonObject = new JSONObject();
           jsonObject.put("tagId", new Random().nextInt(1000000));
+          jsonObject.put("readDateTime", new Date().toISOString());
           jsonArray.put(jsonObject);
           Thread.sleep(1000);
         }
