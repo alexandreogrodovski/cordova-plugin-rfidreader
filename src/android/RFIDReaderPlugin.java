@@ -7,7 +7,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.Random;
-import java.util.Date
+import java.util.Date;
+import java.util.TimeZone;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class RFIDReaderPlugin extends CordovaPlugin {
 
@@ -51,10 +54,13 @@ public class RFIDReaderPlugin extends CordovaPlugin {
     @Override
     public void run () {
       try {
+        TimeZone timeZone = TimeZone.getTimeZone("UTC");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+        dateFormat.setTimeZone(timeZone);
         while (execute) {
           JSONObject jsonObject = new JSONObject();
           jsonObject.put("tagId", new Random().nextInt(1000000));
-          jsonObject.put("readDateTime", new Date().toISOString());
+          jsonObject.put("readDateTime", dateFormat.format(new Date()));
           jsonArray.put(jsonObject);
           Thread.sleep(1000);
         }
