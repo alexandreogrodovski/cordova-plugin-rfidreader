@@ -27,7 +27,6 @@
         </config-file>
 
         <source-file src="src/android/RFIDReaderPlugin.java" target-dir="src/itaipubinacional/cordova/plugin" />
-        <source-file src="lib/cw-deviceapi20180918.jar" target-dir="lib" />
         <lib-file src="lib/cw-deviceapi20180918.jar" />
     </platform>
 </plugin>

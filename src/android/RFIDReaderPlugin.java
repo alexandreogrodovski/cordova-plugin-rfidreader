@@ -22,12 +22,13 @@ public class RFIDReaderPlugin extends CordovaPlugin {
   private CallbackContext callbackContext;
   private JSONArray jsonArray = new JSONArray();
   private boolean execute;
-  private RFIDWithUHF rfidReader = RFIDWithUHF.getInstance();
+  private RFIDWithUHF rfidReader;
 
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
     this.callbackContext = callbackContext;
     try {
+      rfidReader = RFIDWithUHF.getInstance();
       switch (action) {
         case START:
           execute = true;
