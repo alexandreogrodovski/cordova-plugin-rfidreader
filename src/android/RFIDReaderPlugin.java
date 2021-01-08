@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.TimeZone;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import com.rscja.deviceapi.RFIDWithUHF;
 
 public class RFIDReaderPlugin extends CordovaPlugin {
 
@@ -21,6 +22,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
   private CallbackContext callbackContext;
   private JSONArray jsonArray = new JSONArray();
   private boolean execute;
+  private RFIDWithUHF rfidReader;
 
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
