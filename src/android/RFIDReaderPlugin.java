@@ -60,6 +60,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         dateFormat.setTimeZone(timeZone);
         while (execute) {
+          String[] result = rfidReader.readTagFromBuffer();
           JSONObject jsonObject = new JSONObject();
           jsonObject.put("tagId", new Random().nextInt(1000000));
           jsonObject.put("readDateTime", dateFormat.format(new Date()));
