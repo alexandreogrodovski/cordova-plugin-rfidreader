@@ -32,6 +32,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
       switch (action) {
         case START:
           execute = true;
+          this.rfidReader.startInventoryTag(0, 0);
           cordova
             .getThreadPool()
             .execute(new ReadTask());
@@ -39,6 +40,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           break;
         case STOP:
           execute = false;
+          this.rfidReader.stopInventory();
           callbackContext.success();
           break;
         case READ:
