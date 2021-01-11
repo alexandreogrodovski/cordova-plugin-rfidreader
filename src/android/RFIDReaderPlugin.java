@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.TimeZone;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-//import com.rscja.deviceapi.RFIDWithUHF;
+import com.rscja.deviceapi.RFIDWithUHF;
 
 public class RFIDReaderPlugin extends CordovaPlugin {
 
