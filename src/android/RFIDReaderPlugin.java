@@ -65,8 +65,8 @@ public class RFIDReaderPlugin extends CordovaPlugin {
         while (execute) {
           String[] result = rfidReader.readTagFromBuffer();
           JSONObject jsonObject = new JSONObject();
-          //jsonObject.put("tagId", new Random().nextInt(1000000));
-          jsonObject.put("tagId", result[0]);
+          jsonObject.put("tagId", new Random().nextInt(1000000));
+          //jsonObject.put("tagId", result[0]);
           jsonObject.put("readDateTime", dateFormat.format(new Date()));
           jsonArray.put(jsonObject);
           Thread.sleep(1000);
