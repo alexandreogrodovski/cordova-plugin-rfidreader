@@ -32,7 +32,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
       switch (action) {
         case START:
           execute = true;
-          this.rfidReader.startInventoryTag(0, 0);
+          //this.rfidReader.startInventoryTag(0, 0);
           cordova
             .getThreadPool()
             .execute(new ReadTask());
@@ -40,7 +40,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
           break;
         case STOP:
           execute = false;
-          this.rfidReader.stopInventory();
+          //this.rfidReader.stopInventory();
           callbackContext.success();
           break;
         case READ:
@@ -63,10 +63,10 @@ public class RFIDReaderPlugin extends CordovaPlugin {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         dateFormat.setTimeZone(timeZone);
         while (execute) {
-          String[] result = rfidReader.readTagFromBuffer();
+          //String[] result = rfidReader.readTagFromBuffer();
           JSONObject jsonObject = new JSONObject();
-          //jsonObject.put("tagId", new Random().nextInt(1000000));
-          jsonObject.put("tagId", result[0]);
+          jsonObject.put("tagId", new Random().nextInt(1000000));
+          //jsonObject.put("tagId", result[0]);
           jsonObject.put("readDateTime", dateFormat.format(new Date()));
           jsonArray.put(jsonObject);
           Thread.sleep(1000);
