@@ -6,6 +6,7 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.lang.Exception;
 import java.util.Random;
 import java.util.Date;
 import java.util.TimeZone;
@@ -29,6 +30,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
     this.callbackContext = callbackContext;
     try {
       rfidReader = RFIDWithUHF.getInstance();
+
       switch (action) {
         case START:
           execute = true;
