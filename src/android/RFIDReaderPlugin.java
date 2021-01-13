@@ -12,9 +12,10 @@ public class RFIDReaderPlugin extends CordovaPlugin {
 
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
+    boolean retorno;
     try {
       RFIDWithUHF rfidReader = RFIDWithUHF.getInstance();
-      boolean retorno = rfidReader.startInventoryTag(0, 0);
+      retorno = rfidReader.startInventoryTag(0, 0);
     } catch (ConfigurationException exception) {
       callbackContext.error(exception.getMessage());
     }
