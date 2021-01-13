@@ -1,5 +1,6 @@
 package itaipubinacional.cordova.plugin;
 
+import org.json.JSONArray;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import com.rscja.deviceapi.RFIDWithUHF;
