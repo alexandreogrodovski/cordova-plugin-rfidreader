@@ -1,5 +1,6 @@
 package itaipubinacional.cordova.plugin;
 
+import android.util.Log;
 import java.lang.Exception;
 import org.json.JSONArray;
 import org.apache.cordova.CallbackContext;
@@ -11,6 +12,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
     try {
+      Log.d("testando o log do android");
       RFIDWithUHF rfidReader = RFIDWithUHF.getInstance();
       if (rfidReader == null)
         throw new Exception("ConfigurationException");
@@ -20,7 +22,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
       //rfidReader.readTagFromBuffer();
       //rfidReader.inventorySingleTag();
       //rfidReader.free();
-      rfidReader.init();
+      //rfidReader.init();
     } catch (Exception exception) {
       callbackContext.error(exception.getMessage());
     }
