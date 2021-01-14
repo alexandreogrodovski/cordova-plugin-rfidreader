@@ -14,7 +14,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
       RFIDWithUHF rfidReader = RFIDWithUHF.getInstance();
       if (rfidReader == null)
         throw new Exception("ConfigurationException");
-      boolean retorno = rfidReader.startInventoryTag(0, 0);
+      boolean retorno = rfidReader.startInventoryyTag(0, 0);
     } catch (Exception exception) {
       callbackContext.error(exception.getMessage());
     }
