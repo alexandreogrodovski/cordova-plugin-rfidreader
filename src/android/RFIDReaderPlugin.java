@@ -22,7 +22,7 @@ public class RFIDReaderPlugin extends CordovaPlugin {
       //rfidReader.readTagFromBuffer();
       //rfidReader.inventorySingleTag();
       //rfidReader.free();
-      //rfidReader.init();
+      rfidReader.init();
     } catch (Exception exception) {
       callbackContext.error(exception.getMessage());
     }
